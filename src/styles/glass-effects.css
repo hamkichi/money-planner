@@ -1,0 +1,120 @@
+/* Liquid Glass Design System */
+
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card {
+  @apply glass-effect p-6;
+}
+
+.glass-primary {
+  background: var(--glass-primary);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 122, 255, 0.3);
+}
+
+.glass-secondary {
+  background: var(--glass-secondary);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(52, 199, 89, 0.3);
+}
+
+.glass-accent {
+  background: var(--glass-accent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 149, 0, 0.3);
+}
+
+.blur-light {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.blur-medium {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.blur-heavy {
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+/* Glass Button Variants */
+.glass-button {
+  @apply glass-effect px-6 py-3 text-white font-medium rounded-lg;
+  @apply transition-all duration-300 ease-out;
+  @apply hover:scale-105 hover:shadow-lg;
+  @apply active:scale-95;
+}
+
+.glass-button-primary {
+  @apply glass-button glass-primary;
+}
+
+.glass-button-secondary {
+  @apply glass-button glass-secondary;
+}
+
+.glass-button-accent {
+  @apply glass-button glass-accent;
+}
+
+/* Glass Input */
+.glass-input {
+  @apply glass-effect px-4 py-3 text-gray-800 dark:text-white;
+  @apply placeholder:text-gray-500 dark:placeholder:text-gray-400;
+  @apply focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  @apply transition-all duration-300 ease-out;
+}
+
+/* Glass Modal */
+.glass-modal {
+  @apply glass-effect max-w-lg mx-auto;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+.glass-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Glass Navigation */
+.glass-nav {
+  @apply glass-effect px-6 py-4;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+/* Glass Progress Bar */
+.glass-progress-bg {
+  @apply glass-effect h-2 w-full rounded-full overflow-hidden;
+}
+
+.glass-progress-fill {
+  @apply h-full rounded-full;
+  background: linear-gradient(90deg, var(--glass-primary), var(--glass-secondary));
+}
+
+/* Responsive Glass Effects */
+@media (max-width: 768px) {
+  .glass-card {
+    @apply p-4;
+    border-radius: 8px;
+  }
+  
+  .glass-button {
+    @apply px-4 py-2 text-sm;
+  }
+}
