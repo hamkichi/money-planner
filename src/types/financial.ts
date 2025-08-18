@@ -119,3 +119,58 @@ export interface LoanCalculationResult {
     remainingBalance: number
   }[]
 }
+
+// 投資シミュレーション関連の型定義
+export interface InvestmentSimulation {
+  goalId: string
+  currentAmount: number
+  targetAmount: number
+  monthlyInvestment: number
+  annualReturn: number
+  projectedMonths: number
+  projectedCompletionDate: Date
+  totalInvested: number
+  totalReturns: number
+  monthlyProjections: MonthlyInvestmentProjection[]
+  scenarios: InvestmentScenarios
+}
+
+export interface MonthlyInvestmentProjection {
+  month: number
+  monthlyInvestment: number
+  cumulativeInvestment: number
+  monthlyReturn: number
+  cumulativeReturns: number
+  totalValue: number
+  progress: number
+}
+
+export interface InvestmentScenarios {
+  conservative: InvestmentScenario
+  expected: InvestmentScenario
+  optimistic: InvestmentScenario
+}
+
+export interface InvestmentScenario {
+  annualReturn: number
+  projectedMonths: number
+  totalValue: number
+  totalReturns: number
+}
+
+// 投資商品とリスクレベル
+export type InvestmentProduct = 
+  | 'stocks'      // 株式
+  | 'bonds'       // 債券
+  | 'mutual-funds' // 投資信託
+  | 'etf'         // ETF
+  | 'reit'        // REIT
+  | 'crypto'      // 暗号資産
+  | 'commodities' // コモディティ
+
+export interface RiskProfile {
+  level: 'conservative' | 'moderate' | 'aggressive'
+  expectedReturn: number
+  volatility: number
+  description: string
+}

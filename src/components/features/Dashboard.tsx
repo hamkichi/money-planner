@@ -7,6 +7,7 @@ import { validateStorageData, clearAllStorageData } from '../../utils/storage'
 import { safeGetGoalsFromStorage } from '../../utils/dataTransformers'
 import GoalList from './goal-setting/GoalList'
 import GoalForm from './goal-setting/GoalForm'
+import InvestmentPlanForm from './investment-plan/InvestmentPlanForm'
 import Modal from '../ui/Modal'
 import GlassCard from '../ui/GlassCard'
 import { formatCurrency } from '../../utils/formatters'
@@ -23,6 +24,8 @@ const Dashboard: React.FC = () => {
   })
   const [showGoalForm, setShowGoalForm] = useState(false)
   const [editingGoal, setEditingGoal] = useState<Goal | undefined>()
+  const [showInvestmentPlan, setShowInvestmentPlan] = useState(false)
+  const [selectedGoal, setSelectedGoal] = useState<Goal | undefined>()
   const { success, error, info } = useToast()
 
   // ゴールの変更をローカルストレージに保存
@@ -106,14 +109,18 @@ const Dashboard: React.FC = () => {
   }
 
   const handleCreatePlan = (goal: Goal) => {
-    // TODO: Navigate to plan creation page
-    info(`目標「${goal.title}」の計画作成機能は近日公開予定です`)
-    console.log('Creating plan for goal:', goal.title)
+    setSelectedGoal(goal)
+    setShowInvestmentPlan(true)
   }
 
   const handleCloseForm = () => {
     setShowGoalForm(false)
     setEditingGoal(undefined)
+  }
+
+  const handleCloseInvestmentPlan = () => {
+    setShowInvestmentPlan(false)
+    setSelectedGoal(undefined)
   }
 
   // Calculate dashboard statistics
@@ -260,6 +267,21 @@ const Dashboard: React.FC = () => {
           onSubmit={handleSaveGoal}
           onCancel={handleCloseForm}
         />
+      </Modal>
+
+      {/* Investment Plan Modal */}
+      <Modal
+        isOpen={showInvestmentPlan}
+        onClose={handleCloseInvestmentPlan}
+        size="2xl"
+        closeOnOverlayClick={false}
+      >
+        {selectedGoal && (
+          <InvestmentPlanForm
+            goal={selectedGoal}
+            onClose={handleCloseInvestmentPlan}
+          />
+        )}
       </Modal>
     </div>
   )

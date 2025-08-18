@@ -82,6 +82,114 @@
   @apply glass-effect max-w-lg mx-auto;
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
+  /* スムーズなスクロール体験 */
+  scroll-behavior: smooth;
+}
+
+.glass-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.glass-modal::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.glass-modal::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.glass-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* モーダルコンテンツのスクロール領域 */
+.glass-modal-content {
+  /* カスタムスクロールバー */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+.glass-modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.glass-modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+.glass-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.glass-modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.glass-modal-content::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* スクロール時のフェード効果とインジケーター */
+.glass-modal-content {
+  position: relative;
+  background: 
+    /* 上部のフェード */
+    linear-gradient(rgba(255, 255, 255, 0.1), transparent) 0 0 / 100% 20px,
+    /* 下部のフェード */
+    linear-gradient(transparent, rgba(255, 255, 255, 0.1)) 0 100% / 100% 20px,
+    /* 背景 */
+    transparent;
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll;
+}
+
+/* スクロールインジケーター */
+.glass-modal-content::before,
+.glass-modal-content::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  width: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-modal-content::before {
+  top: 12px;
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+}
+
+.glass-modal-content::after {
+  bottom: 12px;
+  height: 20px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.5), transparent);
+}
+
+.glass-modal-content:hover::before,
+.glass-modal-content:hover::after {
+  opacity: 1;
+}
+
+/* スクロール可能性の視覚的ヒント */
+.glass-modal-content.has-scroll {
+  padding-right: 24px;
+}
+
+.glass-modal-content.has-scroll::before,
+.glass-modal-content.has-scroll::after {
+  opacity: 0.6;
 }
 
 .glass-overlay {

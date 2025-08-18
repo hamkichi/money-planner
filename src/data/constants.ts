@@ -1,4 +1,4 @@
-import { GoalCategory } from '../types/financial'
+import { GoalCategory, InvestmentProduct } from '../types/financial'
 
 // 目標カテゴリの定義
 export const GOAL_CATEGORIES: { value: GoalCategory; label: string; icon: string }[] = [
@@ -48,6 +48,17 @@ export const DEFAULT_RATES = {
   }
 }
 
+// 投資商品の定義
+export const INVESTMENT_PRODUCTS: { value: InvestmentProduct; label: string; icon: string; description: string }[] = [
+  { value: 'stocks', label: '国内株式', icon: '📈', description: '個別銘柄・ETF・投資信託' },
+  { value: 'bonds', label: '債券', icon: '📊', description: '国債・社債・外国債' },
+  { value: 'mutual-funds', label: '投資信託', icon: '🏛️', description: 'アクティブ・インデックス' },
+  { value: 'etf', label: 'ETF', icon: '📉', description: '上場投資信託' },
+  { value: 'reit', label: 'REIT', icon: '🏢', description: '不動産投資信託' },
+  { value: 'crypto', label: '暗号資産', icon: '₿', description: 'ビットコイン・イーサリアム等' },
+  { value: 'commodities', label: 'コモディティ', icon: '🥇', description: '金・原油・農産物等' }
+]
+
 // 投資ポートフォリオのプリセット
 export const PORTFOLIO_PRESETS = [
   {
@@ -74,6 +85,16 @@ export const PORTFOLIO_PRESETS = [
     allocation: { stocks: 85, bonds: 5, cash: 5, others: 5 },
     expectedReturn: 0.10
   }
+]
+
+// 投資期間の目安
+export const INVESTMENT_PERIODS = [
+  { value: 1, label: '1年', description: '短期投資' },
+  { value: 3, label: '3年', description: '中期投資' },
+  { value: 5, label: '5年', description: '中長期投資' },
+  { value: 10, label: '10年', description: '長期投資' },
+  { value: 20, label: '20年', description: '超長期投資' },
+  { value: 30, label: '30年', description: '生涯投資' }
 ]
 
 // 通貨設定
