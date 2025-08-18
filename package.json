@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "pages:build": "npm run build",
+    "pages:deploy": "npm run pages:build && gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
