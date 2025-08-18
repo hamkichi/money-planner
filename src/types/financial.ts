@@ -174,3 +174,72 @@ export interface RiskProfile {
   volatility: number
   description: string
 }
+
+// 購入シミュレーション関連の型定義
+export interface PurchaseSimulation {
+  goalId: string
+  productName: string
+  productPrice: number
+  currentSavings: number
+  lumpSumScenario: LumpSumScenario
+  loanScenario: LoanScenario
+  recommendation: 'lump_sum' | 'loan'
+  totalDifference: number
+}
+
+export interface LumpSumScenario {
+  paymentMethod: 'lump_sum'
+  initialPayment: number
+  remainingSavings: number
+  investmentReturn: number
+  projectedYears: number
+  monthlyInvestment: number
+  finalAssets: number
+  totalCost: number
+  opportunity: OpportunityAnalysis
+}
+
+export interface LoanScenario {
+  paymentMethod: 'loan'
+  downPayment: number
+  loanAmount: number
+  interestRate: number
+  loanTermMonths: number
+  monthlyPayment: number
+  totalInterest: number
+  totalCost: number
+  remainingSavings: number
+  investmentReturn: number
+  monthlyInvestment: number
+  finalAssets: number
+  opportunity: OpportunityAnalysis
+}
+
+export interface OpportunityAnalysis {
+  totalInvested: number
+  investmentReturns: number
+  finalValue: number
+  monthlyProjections: MonthlyOpportunityProjection[]
+}
+
+export interface MonthlyOpportunityProjection {
+  month: number
+  loanBalance?: number
+  loanPayment?: number
+  investmentContribution: number
+  investmentValue: number
+  netWorth: number
+}
+
+export interface PurchaseOption {
+  id: string
+  name: string
+  description: string
+  icon: string
+}
+
+export interface LoanTerms {
+  interestRate: number
+  termMonths: number
+  downPaymentPercentage: number
+}

@@ -10,6 +10,7 @@ interface GoalListProps {
   onEdit: (goal: Goal) => void
   onDelete: (goalId: string) => void
   onCreatePlan: (goal: Goal) => void
+  onCreatePurchaseSimulation?: (goal: Goal) => void
   onCreateNew: () => void
 }
 
@@ -21,6 +22,7 @@ const GoalList: React.FC<GoalListProps> = ({
   onEdit,
   onDelete,
   onCreatePlan,
+  onCreatePurchaseSimulation,
   onCreateNew
 }) => {
   const [sortBy, setSortBy] = useState<SortBy>('deadline')
@@ -209,6 +211,7 @@ const GoalList: React.FC<GoalListProps> = ({
                 onEdit={onEdit}
                 onDelete={onDelete}
                 onCreatePlan={onCreatePlan}
+                onCreatePurchaseSimulation={onCreatePurchaseSimulation}
               />
             </div>
           ))}

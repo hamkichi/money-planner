@@ -97,6 +97,63 @@ export const INVESTMENT_PERIODS = [
   { value: 30, label: '30年', description: '生涯投資' }
 ]
 
+// 購入オプション
+export const PURCHASE_OPTIONS = [
+  { id: 'car', name: '自動車', description: '新車・中古車', icon: '🚗' },
+  { id: 'house', name: '住宅', description: 'マンション・一戸建て', icon: '🏠' },
+  { id: 'appliance', name: '家電', description: '冷蔵庫・洗濯機等', icon: '📺' },
+  { id: 'education', name: '教育費', description: '学費・習い事', icon: '📚' },
+  { id: 'travel', name: '旅行', description: '海外旅行・国内旅行', icon: '✈️' },
+  { id: 'wedding', name: '結婚式', description: '結婚式・披露宴', icon: '💒' },
+  { id: 'business', name: '事業投資', description: '起業・設備投資', icon: '💼' },
+  { id: 'other', name: 'その他', description: 'カスタム商品', icon: '🛍️' }
+]
+
+// ローン商品タイプ
+export const LOAN_PRODUCTS = [
+  {
+    type: 'auto',
+    name: '自動車ローン',
+    interestRates: [0.02, 0.035, 0.05],
+    maxTermMonths: 84,
+    defaultDownPayment: 20,
+    icon: '🚗'
+  },
+  {
+    type: 'mortgage',
+    name: '住宅ローン',
+    interestRates: [0.005, 0.015, 0.025],
+    maxTermMonths: 420,
+    defaultDownPayment: 20,
+    icon: '🏠'
+  },
+  {
+    type: 'personal',
+    name: 'フリーローン',
+    interestRates: [0.05, 0.08, 0.12],
+    maxTermMonths: 120,
+    defaultDownPayment: 0,
+    icon: '💰'
+  },
+  {
+    type: 'appliance',
+    name: '家電ローン',
+    interestRates: [0.03, 0.06, 0.10],
+    maxTermMonths: 60,
+    defaultDownPayment: 10,
+    icon: '📺'
+  }
+]
+
+// 分析期間オプション
+export const ANALYSIS_PERIODS = [
+  { value: 3, label: '3年', description: '短期分析' },
+  { value: 5, label: '5年', description: '中期分析' },
+  { value: 7, label: '7年', description: '中長期分析' },
+  { value: 10, label: '10年', description: '長期分析' },
+  { value: 15, label: '15年', description: '超長期分析' }
+]
+
 // 通貨設定
 export const CURRENCY = {
   symbol: '¥',

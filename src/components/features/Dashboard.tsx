@@ -8,6 +8,7 @@ import { safeGetGoalsFromStorage } from '../../utils/dataTransformers'
 import GoalList from './goal-setting/GoalList'
 import GoalForm from './goal-setting/GoalForm'
 import InvestmentPlanForm from './investment-plan/InvestmentPlanForm'
+import PurchaseSimulationForm from './purchase-simulation/PurchaseSimulationForm'
 import Modal from '../ui/Modal'
 import GlassCard from '../ui/GlassCard'
 import { formatCurrency } from '../../utils/formatters'
@@ -25,6 +26,7 @@ const Dashboard: React.FC = () => {
   const [showGoalForm, setShowGoalForm] = useState(false)
   const [editingGoal, setEditingGoal] = useState<Goal | undefined>()
   const [showInvestmentPlan, setShowInvestmentPlan] = useState(false)
+  const [showPurchaseSimulation, setShowPurchaseSimulation] = useState(false)
   const [selectedGoal, setSelectedGoal] = useState<Goal | undefined>()
   const { success, error, info } = useToast()
 
@@ -113,6 +115,11 @@ const Dashboard: React.FC = () => {
     setShowInvestmentPlan(true)
   }
 
+  const handleCreatePurchaseSimulation = (goal: Goal) => {
+    setSelectedGoal(goal)
+    setShowPurchaseSimulation(true)
+  }
+
   const handleCloseForm = () => {
     setShowGoalForm(false)
     setEditingGoal(undefined)
@@ -120,6 +127,11 @@ const Dashboard: React.FC = () => {
 
   const handleCloseInvestmentPlan = () => {
     setShowInvestmentPlan(false)
+    setSelectedGoal(undefined)
+  }
+
+  const handleClosePurchaseSimulation = () => {
+    setShowPurchaseSimulation(false)
     setSelectedGoal(undefined)
   }
 
@@ -252,6 +264,7 @@ const Dashboard: React.FC = () => {
           onEdit={handleEditGoal}
           onDelete={handleDeleteGoal}
           onCreatePlan={handleCreatePlan}
+          onCreatePurchaseSimulation={handleCreatePurchaseSimulation}
           onCreateNew={handleCreateGoal}
         />
       </div>
@@ -280,6 +293,21 @@ const Dashboard: React.FC = () => {
           <InvestmentPlanForm
             goal={selectedGoal}
             onClose={handleCloseInvestmentPlan}
+          />
+        )}
+      </Modal>
+
+      {/* Purchase Simulation Modal */}
+      <Modal
+        isOpen={showPurchaseSimulation}
+        onClose={handleClosePurchaseSimulation}
+        size="2xl"
+        closeOnOverlayClick={false}
+      >
+        {selectedGoal && (
+          <PurchaseSimulationForm
+            goal={selectedGoal}
+            onClose={handleClosePurchaseSimulation}
           />
         )}
       </Modal>
