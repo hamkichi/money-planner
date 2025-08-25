@@ -14,7 +14,7 @@
     "deploy": "gh-pages -d dist",
     "pages:build": "npm run build",
     "pages:deploy": "npm run pages:build && gh-pages -d dist",
-    "test": "node --test \"src/**/*.test.ts\""
+    "test": "node --test src/**/*.test.ts"
   },
   "dependencies": {
     "react": "^18.2.0",
